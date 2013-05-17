@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Logo</title>
+			<script src="js/script.js"></script>
+	<script>
+		function start()
+		{
+			var canvas = document.getElementById('logo');
+			var context = canvas.getContext('2d');
+			context.canvas.width  = window.innerWidth*98/100;
+			context.canvas.height = window.innerHeight*98/100;
+			// load background image
+			var backgroundImage = new Image();
+			backgroundImage.src = 'images/lose.png';
+			backgroundImage.onload = function() {
+				context.drawImage(backgroundImage, 0, 0 , canvas.width, canvas.height);
+			}
+			backgroundImage.onerror = function() {
+				console.log('Error loading the background image.');
+			}
+            context.font = '40px Verdana';
+            context.fillStyle = '#ff0';
+            context.fillText(endMsg, 50, 200);
+			context.fillText('your score: ' + iScore * 100 + ' points', 50, 250);
+			context.fillText('Opponent score: ' + oppScore, 50, 300);
+			
+		}
+	</script>
+</head>
+
+	<body onload="start();">
+		<center>
+			<a href="levels.html">
+				<canvas id="logo"></canvas>
+			</a>
+		</center>
+    </body>
+</html>
